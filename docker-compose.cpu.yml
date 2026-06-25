@@ -12,14 +12,14 @@ services:
       - LLAMA_CACHE=/models
     command:
       - "-hf"
-      - "${CPU_HF_MODEL:-unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL}"
+      - "${CPU_HF_MODEL:-unsloth/gemma-4-12b-it-GGUF:UD-Q4_K_XL}"
       - "--host"
       - "0.0.0.0"
       - "--port"
       - "8001"
       - "-c"
       - "${LLAMA_CTX_SIZE:-16384}"
-      - "--temp"
+      - "--temp" # Based on unsloth recommendation for mtp models https://unsloth.ai/docs/models/mtp
       - "0.6"
       - "--top-p"
       - "0.95"
@@ -28,9 +28,13 @@ services:
       - "--min-p"
       - "0.00"
       - "--alias"
-      - "unsloth/Qwen3.5-9B-GGUF"
-      - "--chat-template-kwargs"
-      - '{"enable_thinking":true}'
+      - "${CPU_HF_MODEL_ALIAS:-unsloth/gemma-4-12b-it-GGUF}"
+      - "--threads"
+      - "12" # Considering AMD Ryzen Zen 5. Making four threads available for 9950xd.
+      - "--spec-type"
+      - "draft-mtp"
+      - "--spec-draft-n-max"
+      - "2"
     restart: unless-stopped
 
   agent:
