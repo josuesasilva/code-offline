@@ -1,4 +1,4 @@
 {
   "defaultProvider": "llama-cpp",
-  "defaultModel": "unsloth/gemma-4-12b-it-GGUF:UD-Q4_K_XL",
+  "defaultModel": "unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL"
 }

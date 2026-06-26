@@ -6,7 +6,7 @@
       "apiKey": "none",
       "models": [
         {
-          "id": "unsloth/gemma-4-12b-it-GGUF:UD-Q4_K_XL"
+          "id": "unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q4_K_XL"
         }
       ]
     }
